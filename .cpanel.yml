@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/proampacholiday/2019.proampacholidaywishes.com
+    - /bin/rsync -av --delete dist/ $DEPLOYPATH

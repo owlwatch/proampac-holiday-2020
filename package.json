@@ -1,0 +1,25 @@
+{
+  "name": "jean-luc-ecard",
+  "private": true,
+  "version": "1.0.0",
+  "description": "2020 jean-luc-ecard",
+  "author": "Mark Fabrizio",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "sass": "^1.23.7"
+  },
+  "dependencies": {
+    "@terwanerik/scrolltrigger": "^1.0.3",
+    "animate.css": "^3.7.2",
+    "babel": "^6.23.0",
+    "imagesloaded": "^4.1.4",
+    "jquery": "^3.4.1",
+    "parcel-bundler": "^1.12.4",
+    "scrollmagic": "^2.0.7"
+  }
+}
