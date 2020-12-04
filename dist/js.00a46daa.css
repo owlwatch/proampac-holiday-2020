@@ -7,7 +7,7 @@
 .snowflake .rope {
   position: relative;
   width: 2px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.4);
   left: 50%;
   margin-left: -2px;
 }
@@ -15,7 +15,7 @@
   max-width: 100%;
 }
 .letter {
-  width: 14rem;
+  width: 18rem;
   perspective: 1200px;
   position: absolute;
   bottom: 35vh;
@@ -36,56 +36,89 @@
 .letter-rope, .letter-alpha {
   display: block;
   max-width: 100%;
+  transform-origin: 50% 0;
+}
+.letter-shadow-container .letter-alpha {
+  position: relative;
+  top: 1rem;
+  animation: scaling-backwards 4.5s -3s ease-in-out forwards infinite;
 }
 .letter.j {
-  width: 8.50164rem;
-  margin-left: -13rem;
+  width: 10.93068rem;
+  margin-left: -16.7142857143rem;
 }
-.letter.j .letter-container {
+.letter.j .letter-shadow-container,
+.letter.j .letter-container,
+.letter.j .letter-alpha {
   animation-delay: -2s;
 }
 .letter.o {
-  margin-left: -2rem;
+  margin-left: -2.5714285714rem;
 }
 .letter.y {
-  margin-left: 10rem;
-  margin-bottom: 0.5rem;
+  margin-left: 12.8571428571rem;
+  margin-bottom: 0.6428571429rem;
 }
-.letter.y .letter-container {
+.letter.y .letter-shadow-container,
+.letter.y .letter-container,
+.letter.y .letter-alpha {
   animation-delay: 1s;
 }
 
 @keyframes swinging-x {
   0% {
-    transform: rotate3d(1, 0, 0, 1deg);
+    transform: rotate3d(1, 0, 0, 0.5deg);
   }
   50% {
-    transform: rotate3d(1, 0, 0, -1deg);
+    transform: rotate3d(1, 0, 0, -0.5deg);
   }
   100% {
-    transform: rotate3d(1, 0, 0, 1deg);
+    transform: rotate3d(1, 0, 0, 0.5deg);
   }
 }
 @keyframes swinging-x-backwards {
   0% {
-    transform: rotate3d(1, 0, 0, -1deg);
+    transform: rotate3d(1, 0, 0, -0.5deg);
   }
   50% {
     transform: rotate3d(1, 0, 0, 0deg);
   }
   100% {
-    transform: rotate3d(1, 0, 0, -1deg);
+    transform: rotate3d(1, 0, 0, -0.5deg);
   }
 }
-body, html {
+@keyframes scaling {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes scaling-backwards {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+body,
+html {
   height: 100%;
   position: relative;
   padding: 0;
   margin: 0;
   display: flex;
   width: 100%;
+  background: #6CA98E;
   overflow: hidden;
-  background: #75aa8d;
 }
 
 * {
@@ -97,6 +130,7 @@ body, html {
 #scene {
   height: 100%;
   width: 100%;
+  overflow: hidden;
   position: relative;
   color: #fff;
 }
@@ -110,6 +144,28 @@ body, html {
   height: 100%;
 }
 
+.ground {
+  position: absolute;
+  left: -5vw;
+  width: 110vw;
+  top: 85vh;
+  height: 20vh;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.4);
+  mix-blend-mode: multiply;
+}
+
+.horizon {
+  position: absolute;
+  left: -50vw;
+  width: 200vw;
+  top: 77vh;
+  height: 8vh;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  background: radial-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 50%);
+}
+
 .spotlight {
   position: absolute;
   top: 50%;
@@ -121,37 +177,152 @@ body, html {
 }
 
 .snowflake-1 {
-  margin-left: -5rem;
-  width: 10rem;
-  animation: swinging 4s ease-in-out forwards infinite;
+  margin-left: calc(-6.325rem - 60.9vw);
+  width: calc(2.025rem + 9.3vw);
+  animation: swinging 4.5s -2s ease-in-out backwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-1 {
+    margin-left: -52rem;
+  }
+}
+@media (min-width: 1200px) {
+  .snowflake-1 {
+    width: 9rem;
+  }
 }
 .snowflake-1 .rope {
-  height: 15rem;
+  height: calc(2.325rem + 12.9vw);
+}
+@media (min-width: 1200px) {
+  .snowflake-1 .rope {
+    height: 12rem;
+  }
 }
 
 .snowflake-2 {
-  margin-left: 15rem;
-  width: 14rem;
-  animation: swinging 4.5s -1s ease-in-out backwards infinite;
+  margin-left: calc(-5.625rem - 52.5vw);
+  width: calc(2.625rem + 16.5vw);
+  animation: swinging 6.5s -2s ease-in-out backwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-2 {
+    margin-left: -45rem;
+  }
+}
+@media (min-width: 1200px) {
+  .snowflake-2 {
+    width: 15rem;
+  }
 }
 .snowflake-2 .rope {
-  height: 15rem;
+  height: calc(3.125rem + 22.5vw);
+}
+@media (min-width: 1200px) {
+  .snowflake-2 .rope {
+    height: 20rem;
+  }
 }
 
 .snowflake-3 {
-  margin-left: -26rem;
-  width: 8rem;
-  animation: swinging 4.5s -3s ease-in-out backwards infinite;
+  margin-left: calc(-4.125rem - 34.5vw);
+  width: 10rem;
+  animation: swinging 4s -0.5s ease-in-out forwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-3 {
+    margin-left: -30rem;
+  }
 }
 .snowflake-3 .rope {
+  height: 10rem;
+}
+
+.snowflake-4 {
+  margin-left: calc(-2.725rem - 17.7vw);
+  width: 8rem;
+  animation: swinging 5.5s -3s ease-in-out backwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-4 {
+    margin-left: -16rem;
+  }
+}
+.snowflake-4 .rope {
   height: 20rem;
+}
+
+.snowflake-5 {
+  margin-left: 0rem;
+  width: 10rem;
+  animation: swinging 4s ease-in-out forwards infinite;
+}
+.snowflake-5 .rope {
+  height: 15rem;
+}
+
+.snowflake-6 {
+  margin-left: calc(2.625rem + 16.5vw);
+  width: 14rem;
+  animation: swinging 8.5s -1s ease-in-out backwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-6 {
+    margin-left: 15rem;
+  }
+}
+.snowflake-6 .rope {
+  height: 15rem;
+}
+
+.snowflake-7 {
+  margin-left: calc(4.525rem + 39.3vw);
+  width: 12rem;
+  animation: swinging 4.5s -2.5s ease-in-out backwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-7 {
+    margin-left: 34rem;
+  }
+}
+.snowflake-7 .rope {
+  height: calc(3.525rem + 27.3vw);
+}
+@media (min-width: 1200px) {
+  .snowflake-7 .rope {
+    height: 24rem;
+  }
+}
+
+.snowflake-8 {
+  margin-left: calc(5.625rem + 52.5vw);
+  width: calc(2.025rem + 9.3vw);
+  animation: swinging 4.5s -1.3s ease-in-out backwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-8 {
+    margin-left: 45rem;
+  }
+}
+@media (min-width: 1200px) {
+  .snowflake-8 {
+    width: 9rem;
+  }
+}
+.snowflake-8 .rope {
+  height: calc(2.325rem + 12.9vw);
+}
+@media (min-width: 1200px) {
+  .snowflake-8 .rope {
+    height: 12rem;
+  }
 }
 
 .chain {
   position: absolute;
-  bottom: 2rem;
+  bottom: 3rem;
   left: 50%;
-  width: 60rem;
+  width: 90rem;
   transform: translate(-50%, 0%);
 }
 .chain img {
@@ -161,12 +332,12 @@ body, html {
 
 @keyframes swinging {
   0% {
-    transform: rotate(10deg);
+    transform: rotate(5deg);
   }
   50% {
     transform: rotate(-5deg);
   }
   100% {
-    transform: rotate(10deg);
+    transform: rotate(5deg);
   }
 }

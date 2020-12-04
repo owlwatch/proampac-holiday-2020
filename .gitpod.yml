@@ -1,5 +1,10 @@
 image: gitpod/workspace-full
 
 tasks:
-  - init: npm install
+  - init: npm install && sed -ri "s/hostname\s\+\s':'\s\+\sprocess\.env\.HMR_PORT/hostname.replace(\/^(\\d+)\/, process.env.HMR_PORT) + ':443'/" ./node_modules/parcel-bundler/src/builtins/hmr-runtime.js
     command: npm run start
+
+ports:
+  - port: 1234
+  - port: 3000
+    onOpen: ignore
