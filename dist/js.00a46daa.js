@@ -10263,14 +10263,14 @@ exports.default = void 0;
 //
 var _default = {};
 exports.default = _default;
-        var $254337 = exports.default || module.exports;
+        var $cf87e9 = exports.default || module.exports;
       
-      if (typeof $254337 === 'function') {
-        $254337 = $254337.options;
+      if (typeof $cf87e9 === 'function') {
+        $cf87e9 = $cf87e9.options;
       }
     
         /* template */
-        Object.assign($254337, (function () {
+        Object.assign($cf87e9, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -10310,9 +10310,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$254337', $254337);
+            api.createRecord('$cf87e9', $cf87e9);
           } else {
-            api.reload('$254337', $254337);
+            api.reload('$cf87e9', $cf87e9);
           }
         }
 
@@ -10381,19 +10381,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var strings = {
   j: _Joy_JString.default,
   o: _Joy_OString.default,
@@ -10432,14 +10419,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $f5f1f9 = exports.default || module.exports;
+        var $182c4b = exports.default || module.exports;
       
-      if (typeof $f5f1f9 === 'function') {
-        $f5f1f9 = $f5f1f9.options;
+      if (typeof $182c4b === 'function') {
+        $182c4b = $182c4b.options;
       }
     
         /* template */
-        Object.assign($f5f1f9, (function () {
+        Object.assign($182c4b, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -10479,9 +10466,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$f5f1f9', $f5f1f9);
+            api.createRecord('$182c4b', $182c4b);
           } else {
-            api.reload('$f5f1f9', $f5f1f9);
+            api.reload('$182c4b', $182c4b);
           }
         }
 
@@ -10564,109 +10551,133 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default = {
+  data: function data() {
+    return {
+      scene: 1
+    };
+  },
   components: {
     Snowflake: _Snowflake.default,
     Letter: _Letter.default
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.instance = new _parallaxJs.default(this.$el);
+    document.addEventListener('mousewheel', function (e) {
+      return _this.onMousewheel(e);
+    }, false);
   },
   destroy: function destroy() {
     if (this.instance) this.instance.destroy();
+  },
+  methods: {
+    onMousewheel: function onMousewheel(e) {}
   }
 };
 exports.default = _default;
-        var $aefdf4 = exports.default || module.exports;
+        var $8047aa = exports.default || module.exports;
       
-      if (typeof $aefdf4 === 'function') {
-        $aefdf4 = $aefdf4.options;
+      if (typeof $8047aa === 'function') {
+        $8047aa = $8047aa.options;
       }
     
         /* template */
-        Object.assign($aefdf4, (function () {
+        Object.assign($8047aa, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("ul", { attrs: { id: "scene" } }, [
     _vm._m(0),
+    _vm._m(1),
+    _vm._m(2),
     _c(
       "li",
-      { attrs: { "data-depth": "0.3" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.3" } },
       [_c("letter", { attrs: { is_shadow: true, letter: "j" } })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.3" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.3" } },
       [_c("letter", { attrs: { is_shadow: true, letter: "o" } })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.3" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.3" } },
       [_c("letter", { attrs: { is_shadow: true, letter: "y" } })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.4" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.4" } },
       [_c("letter", { attrs: { letter: "j" } })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.4" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.4" } },
       [_c("letter", { attrs: { letter: "o" } })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.4" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.4" } },
       [_c("letter", { attrs: { letter: "y" } })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.6" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.6" } },
       [_c("snowflake", { staticClass: "snowflake-1" })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.8" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.8" } },
       [_c("snowflake", { staticClass: "snowflake-2" })],
       1
     ),
     _c(
       "li",
-      { attrs: { "data-depth": "0.5" } },
+      { staticClass: "slide1", attrs: { "data-depth": "0.5" } },
       [_c("snowflake", { staticClass: "snowflake-3" })],
       1
     ),
-    _vm._m(1)
+    _c(
+      "li",
+      { staticClass: "slide1", attrs: { "data-depth": "0.6" } },
+      [_c("snowflake", { staticClass: "snowflake-4" })],
+      1
+    ),
+    _c(
+      "li",
+      { staticClass: "slide1", attrs: { "data-depth": "0.8" } },
+      [_c("snowflake", { staticClass: "snowflake-5" })],
+      1
+    ),
+    _c(
+      "li",
+      { staticClass: "slide1", attrs: { "data-depth": "0.5" } },
+      [_c("snowflake", { staticClass: "snowflake-6" })],
+      1
+    ),
+    _c(
+      "li",
+      { staticClass: "slide1", attrs: { "data-depth": "0.5" } },
+      [_c("snowflake", { staticClass: "snowflake-7" })],
+      1
+    ),
+    _c(
+      "li",
+      { staticClass: "slide1", attrs: { "data-depth": "0.5" } },
+      [_c("snowflake", { staticClass: "snowflake-8" })],
+      1
+    ),
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -10674,15 +10685,37 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { attrs: { "data-depth": "0.05" } }, [
-      _c("div", { staticClass: "spotlight" })
-    ])
+    return _c(
+      "li",
+      { staticClass: "slide1 slide2", attrs: { "data-depth": "0.05" } },
+      [_c("div", { staticClass: "spotlight" })]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { attrs: { "data-depth": "0.3" } }, [
+    return _c(
+      "li",
+      { staticClass: "slide1 slide2", attrs: { "data-depth": "0.1" } },
+      [_c("div", { staticClass: "ground" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "slide1 slide2", attrs: { "data-depth": "0.1" } },
+      [_c("div", { staticClass: "horizon" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "slide1", attrs: { "data-depth": "0.5" } }, [
       _c("div", { staticClass: "chain" }, [
         _c("img", { attrs: { src: "/chain_full.7cae0003.png" } })
       ])
@@ -10708,9 +10741,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$aefdf4', $aefdf4);
+            api.createRecord('$8047aa', $8047aa);
           } else {
-            api.reload('$aefdf4', $aefdf4);
+            api.reload('$8047aa', $8047aa);
           }
         }
 
@@ -10767,7 +10800,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57746" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname.replace(/^(\d+)/, "3000") + ':443' + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
