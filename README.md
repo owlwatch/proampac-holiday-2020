@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/owlwatch/proampac-holiday-2020)
+
 # jean-luc-ecard
 
 ## Run `npm install` in the root directory
