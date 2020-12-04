@@ -1,0 +1,172 @@
+.snowflake {
+  position: absolute;
+  transform-origin: 50% 0;
+  top: -10rem;
+  left: 50%;
+}
+.snowflake .rope {
+  position: relative;
+  width: 2px;
+  background: #fff;
+  left: 50%;
+  margin-left: -2px;
+}
+.snowflake .flake {
+  max-width: 100%;
+}
+.letter {
+  width: 14rem;
+  perspective: 1200px;
+  position: absolute;
+  bottom: 35vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.letter-container {
+  transform-origin: 50% 10%;
+  animation: swinging-x 4.5s -3s ease-in-out forwards infinite;
+}
+.letter-shadow-container {
+  transform-origin: 50% 10%;
+  animation: swinging-x-backwards 4.5s -3s ease-in-out forwards infinite;
+}
+.letter-shadow-container .letter-rope {
+  visibility: hidden;
+}
+.letter-rope, .letter-alpha {
+  display: block;
+  max-width: 100%;
+}
+.letter.j {
+  width: 8.50164rem;
+  margin-left: -13rem;
+}
+.letter.j .letter-container {
+  animation-delay: -2s;
+}
+.letter.o {
+  margin-left: -2rem;
+}
+.letter.y {
+  margin-left: 10rem;
+  margin-bottom: 0.5rem;
+}
+.letter.y .letter-container {
+  animation-delay: 1s;
+}
+
+@keyframes swinging-x {
+  0% {
+    transform: rotate3d(1, 0, 0, 1deg);
+  }
+  50% {
+    transform: rotate3d(1, 0, 0, -1deg);
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1deg);
+  }
+}
+@keyframes swinging-x-backwards {
+  0% {
+    transform: rotate3d(1, 0, 0, -1deg);
+  }
+  50% {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, -1deg);
+  }
+}
+body, html {
+  height: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  background: #75aa8d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#scene {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  color: #fff;
+}
+
+#scene > li {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+}
+
+.spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 50%);
+  transform: translate(-50%, -50%);
+}
+
+.snowflake-1 {
+  margin-left: -5rem;
+  width: 10rem;
+  animation: swinging 4s ease-in-out forwards infinite;
+}
+.snowflake-1 .rope {
+  height: 15rem;
+}
+
+.snowflake-2 {
+  margin-left: 15rem;
+  width: 14rem;
+  animation: swinging 4.5s -1s ease-in-out backwards infinite;
+}
+.snowflake-2 .rope {
+  height: 15rem;
+}
+
+.snowflake-3 {
+  margin-left: -26rem;
+  width: 8rem;
+  animation: swinging 4.5s -3s ease-in-out backwards infinite;
+}
+.snowflake-3 .rope {
+  height: 20rem;
+}
+
+.chain {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  width: 60rem;
+  transform: translate(-50%, 0%);
+}
+.chain img {
+  width: 100%;
+  max-width: 100vw;
+}
+
+@keyframes swinging {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
