@@ -69,7 +69,11 @@ export default {
 <!-- SCSS Style -->
 <style lang="scss">
 .letter {
-	$baseLetterWidth: 18rem;
+	font-size: 18rem;
+	@media( max-width: 600px ){
+		font-size: 10rem;
+	}
+	$baseLetterWidth: 1em;
 	width: $baseLetterWidth;
 	perspective: 1200px;
 	position: absolute;

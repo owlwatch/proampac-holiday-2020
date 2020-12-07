@@ -1,10 +1,11 @@
 <!-- Pug Template -->
 <template lang="pug">
-.snowflake.snowflake-1
+.snowflake
 	.rope
-	img.flake(
-		src="../../img/snowflake.svg"
-	)
+	.flake
+		img(
+			src="../../img/snowflake.svg"
+		)
 
 </template>
 
@@ -29,7 +30,27 @@ export default {
 		margin-left: -2px;
 	}
 	.flake {
-		max-width: 100%;
+		perspective: 800px;
+		img {
+			display: block;
+			max-width: 100%;
+			animation: leftright 4.5s ease-in-out backwards infinite;
+			transform-origin: 50% 50%;
+			max-width: 100%;
+		}
+		
+	}
+}
+
+@keyframes leftright {
+	0% {
+		transform: rotateY(10deg);
+	}
+	50% {
+		transform: rotateY(-10deg);
+	}
+	100% {
+		transform: rotateY(10deg);
 	}
 }
 </style>
