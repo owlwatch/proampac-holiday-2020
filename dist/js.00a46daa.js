@@ -10662,6 +10662,10 @@ var _default = {
     scene: function scene(current, last) {
       var _this2 = this;
 
+      if (current == undefined) {
+        return;
+      }
+
       this.transition = true;
       setTimeout(function () {
         return _this2.transition = false;

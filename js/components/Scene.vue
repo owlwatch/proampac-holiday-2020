@@ -154,6 +154,9 @@ export default {
 
 	watch: {
 		scene(current, last) {
+			if( current == undefined ){
+				return;
+			}
 			this.transition = true;
 			setTimeout(() => (this.transition = false), 2000);
 			this.disableArrows(['up','down','left','right']);
