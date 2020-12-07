@@ -52,10 +52,9 @@ ul#scene(:class="{ transition }", :data-scene="scene")
 			snowflake.snowflake-8
 
 	// Message
-	li.message
+	li.messagen
 		.message-copy
 			p Joy is appreciating what makes us unique, and celebrating our similarities,
-				|
 				| together, through community.
 
 			p Happy Holidays to you and yours from ProAmpac.
