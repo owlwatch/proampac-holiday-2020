@@ -225,6 +225,7 @@ a {
   flex-shrink: 0;
   text-align: center;
   display: flex;
+  height: auto;
   justify-content: center;
   align-items: center;
   font-size: calc(1.275rem + 0.3vw);

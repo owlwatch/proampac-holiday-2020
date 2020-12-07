@@ -10690,7 +10690,7 @@ var _default = {
     window.addEventListener("swipe", this.swipeCallback, false);
     window.addEventListener("keyup", this.keyupCallback, false);
     window.addEventListener(this.wheelEvent, this.wheelCallback, false);
-    this.scene = 1;
+    this.scene = 3;
   },
   destroy: function destroy() {
     if (this.instance) {
