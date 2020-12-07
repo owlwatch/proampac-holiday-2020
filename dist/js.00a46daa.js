@@ -10482,6 +10482,42 @@ render._withStripped = true
 },{"../../img/Joy_J-string.png":"img/Joy_J-string.png","../../img/Joy_O-string.png":"img/Joy_O-string.png","../../img/Joy_Y-string.png":"img/Joy_Y-string.png","../../img/Joy_J-paper.png":"img/Joy_J-paper.png","../../img/Joy_O-paper.png":"img/Joy_O-paper.png","../../img/Joy_Y-paper.png":"img/Joy_Y-paper.png","../../img/Joy_J-shadow.png":"img/Joy_J-shadow.png","../../img/Joy_O-shadow.png":"img/Joy_O-shadow.png","../../img/Joy_Y-shadow.png":"img/Joy_Y-shadow.png","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"node_modules/swipe-listener/dist/swipe-listener.min.js":[function(require,module,exports) {
 var define;
 'use strict';var _extends=Object.assign||function(a){for(var b,c=1;c<arguments.length;c++)for(var d in b=arguments[c],b)Object.prototype.hasOwnProperty.call(b,d)&&(a[d]=b[d]);return a},SwipeListener=function(a,b){if(a){'undefined'!=typeof window&&function(){function a(a,b){b=b||{bubbles:!1,cancelable:!1,detail:void 0};var c=document.createEvent('CustomEvent');return c.initCustomEvent(a,b.bubbles,b.cancelable,b.detail),c}return'function'!=typeof window.CustomEvent&&void(a.prototype=window.Event.prototype,window.CustomEvent=a)}();b||(b={}),b=_extends({},{minHorizontal:10,minVertical:10,deltaHorizontal:3,deltaVertical:5,preventScroll:!1,lockAxis:!0,touch:!0,mouse:!0},b);var c=[],d=!1,e=function(){d=!0},f=function(a){d=!1,h(a)},g=function(a){d&&(a.changedTouches=[{clientX:a.clientX,clientY:a.clientY}],i(a))};b.mouse&&(a.addEventListener('mousedown',e),a.addEventListener('mouseup',f),a.addEventListener('mousemove',g));var h=function(d){var e=Math.abs,f=Math.max,g=Math.min;if(c.length){for(var h='function'==typeof TouchEvent&&d instanceof TouchEvent,j=[],k=[],l={top:!1,right:!1,bottom:!1,left:!1},m=0;m<c.length;m++)j.push(c[m].x),k.push(c[m].y);var i=j[0],n=j[j.length-1],o=k[0],p=k[k.length-1],q={x:[i,n],y:[o,p]};if(1<c.length){var r={detail:_extends({touch:h,target:d.target},q)},s=new CustomEvent('swiperelease',r);a.dispatchEvent(s)}var t=j[0]-j[j.length-1],u='none';u=0<t?'left':'right';var v,w=g.apply(Math,j),x=f.apply(Math,j);if(e(t)>=b.minHorizontal&&('left'==u?(v=e(w-j[j.length-1]),v<=b.deltaHorizontal&&(l.left=!0)):'right'==u?(v=e(x-j[j.length-1]),v<=b.deltaHorizontal&&(l.right=!0)):void 0),t=k[0]-k[k.length-1],u='none',u=0<t?'top':'bottom',w=g.apply(Math,k),x=f.apply(Math,k),e(t)>=b.minVertical&&('top'==u?(v=e(w-k[k.length-1]),v<=b.deltaVertical&&(l.top=!0)):'bottom'==u?(v=e(x-k[k.length-1]),v<=b.deltaVertical&&(l.bottom=!0)):void 0),(c=[],l.top||l.right||l.bottom||l.left)){b.lockAxis&&((l.left||l.right)&&e(i-n)>e(o-p)?l.top=l.bottom=!1:(l.top||l.bottom)&&e(i-n)<e(o-p)&&(l.left=l.right=!1));var y={detail:_extends({directions:l,touch:h,target:d.target},q)},z=new CustomEvent('swipe',y);a.dispatchEvent(z)}else{var A=new CustomEvent('swipecancel',{detail:_extends({touch:h,target:d.target},q)});a.dispatchEvent(A)}}},i=function(d){var e=d.changedTouches[0];if(c.push({x:e.clientX,y:e.clientY}),1<c.length){var f=c[0].x,g=c[c.length-1].x,h=c[0].y,i=c[c.length-1].y,j={detail:{x:[f,g],y:[h,i],touch:'function'==typeof TouchEvent&&d instanceof TouchEvent,target:d.target}},k=new CustomEvent('swiping',j),l=!0===b.preventScroll||'function'==typeof b.preventScroll&&b.preventScroll(k);l&&d.preventDefault(),a.dispatchEvent(k)}},j=!1;try{var k=Object.defineProperty({},'passive',{get:function(){j={passive:!b.preventScroll}}});window.addEventListener('testPassive',null,k),window.removeEventListener('testPassive',null,k)}catch(a){}return b.touch&&(a.addEventListener('touchmove',i,j),a.addEventListener('touchend',h)),{off:function(){a.removeEventListener('touchmove',i,j),a.removeEventListener('touchend',h),a.removeEventListener('mousedown',e),a.removeEventListener('mouseup',f),a.removeEventListener('mousemove',g)}}}};'undefined'!=typeof module&&'undefined'!=typeof module.exports?(module.exports=SwipeListener,module.exports.default=SwipeListener):'function'==typeof define&&define.amd?define([],function(){return SwipeListener}):window.SwipeListener=SwipeListener;
+},{}],"js/lang/en.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  message: "\n<p>Joy is appreciating what makes us unique, and celebrating our similarities,\ntogether, through community.</p>\n\n<p>Happy Holidays to you and yours from ProAmpac.</p>\n",
+  nep: "\n<p class=\"leading\"><strong>ProAmpac</strong> and <strong>Northeast Passage</strong> are doing good things every day.</p>\n\n<p>We support <strong>Northeast Passage</strong> in their mission of helping together\nto provide barrier free recreation and health promotion programs for people with\ndisabling conditions.</p>\n\n<p>Learn more about Northeast Passage at <a href=\"https://nepassage.org\" target=\"_blank\">www.nepassage.org</a>.</p>"
+};
+exports.default = _default;
+},{}],"js/lang/fr.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  message: "\n<p>La joie, c'est d\u2019appr\xE9cier ce qui nous rend uniques \net de c\xE9l\xE9brer nos similitudes, ensemble, \n\xE0 travers la communaut\xE9.</p>\n\n<p>Joyeuses f\xEAtes</p>\n",
+  nep: "\n<p class=\"leading\"><strong>ProAmpac</strong> et <strong>Northeast Passage</strong> font \nde bonnes choses tous les jours.</p>\n\n<p>Nous soutenons Northeast Passage dans sa mission d'aider \xE0 fournir des programmes\nde loisirs sans barri\xE8res et de promotion de la sant\xE9 pour les personnes ayant une incapacit\xE9.</p>\n\n<p>Pour en savoir plus sur Northeast Passage, visitez le site \n<a href=\"https://nepassage.org\" target=\"_blank\">www.nepassage.org</a>.</p>\n"
+};
+exports.default = _default;
+},{}],"js/lang/de.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  message: "\n<p>Freude bedeutet dankbar zu sein daf\xFCr, was uns einzigartig macht,\nund unsere Gemeinsamkeiten zusammen\nin der Gemeinschaft zu feiern.\n</p>\n\n<p>Joyeuses f\xEAtes</p>\n",
+  nep: "\n<p class=\"leading\"><strong>ProAmpac</strong> und <strong>Northeast Passage</strong> \njeden Tag Gutes.</p>\n\n<p>Wir unterst\xFCtzen Northeast Passage bei ihren Bem\xFChungen um die Bereitstellung \nvon barrierefreien Freizeit- und Gesundheitsf\xF6rderungsprogrammen f\xFCr Menschen mit Behinderungen.</p>\n\n<p>Informieren Sie sich n\xE4her \xFCber Northeast Passage auf \n<a href=\"https://nepassage.org\" target=\"_blank\">www.nepassage.org</a>.</p>\n"
+};
+exports.default = _default;
 },{}],"js/components/Scene.vue":[function(require,module,exports) {
 "use strict";
 
@@ -10497,6 +10533,12 @@ var _Snowflake = _interopRequireDefault(require("./Snowflake"));
 var _Letter = _interopRequireDefault(require("./Letter"));
 
 var _swipeListener = _interopRequireDefault(require("swipe-listener"));
+
+var _en = _interopRequireDefault(require("../lang/en"));
+
+var _fr = _interopRequireDefault(require("../lang/fr"));
+
+var _de = _interopRequireDefault(require("../lang/de"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10607,12 +10649,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
+var languageStrings = {
+  en: _en.default,
+  fr: _fr.default,
+  de: _de.default
+};
 var _default = {
   data: function data() {
     return {
       scene: 0,
-      transition: false
+      transition: false,
+      language: 'en'
     };
   },
   components: {
@@ -10625,7 +10672,7 @@ var _default = {
     this.parallax = new _parallaxJs.default(this.$el, {
       selector: ".layer"
     });
-    this.swipeListener = new _swipeListener.default(document.body);
+    this.swipeListener = new _swipeListener.default(window);
 
     this.swipeCallback = function (e) {
       return _this.onSwipe(e);
@@ -10643,7 +10690,7 @@ var _default = {
     window.addEventListener("swipe", this.swipeCallback, false);
     window.addEventListener("keyup", this.keyupCallback, false);
     window.addEventListener(this.wheelEvent, this.wheelCallback, false);
-    this.scene = 1;
+    this.scene = 3;
   },
   destroy: function destroy() {
     if (this.instance) {
@@ -10659,8 +10706,22 @@ var _default = {
     }
   },
   watch: {
-    scene: function scene(current, last) {
+    language: function language(key) {
       var _this2 = this;
+
+      if (this.scene == 3) {
+        // apply active to all the paragraphs
+        setTimeout(function () {
+          var paragraphs = _this2.$el.querySelectorAll('.learn-more .copy p');
+
+          for (var i = 0; i < paragraphs.length; i++) {
+            paragraphs[i].classList.add('active');
+          }
+        }, 0);
+      }
+    },
+    scene: function scene(current, last) {
+      var _this3 = this;
 
       if (current == undefined) {
         return;
@@ -10668,118 +10729,33 @@ var _default = {
 
       this.transition = true;
       setTimeout(function () {
-        return _this2.transition = false;
+        return _this3.transition = false;
       }, 2000);
       this.disableArrows(['up', 'down', 'left', 'right']);
 
-      switch (last) {
-        case 1:
-          var flakes = this.$el.querySelectorAll(".snowflakes > .layer");
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
-
-          try {
-            var _loop2 = function _loop2() {
-              var flake = _step.value;
-
-              if (flake.classList.contains("active")) {
-                flake.style.transitionDuration = 1 - Math.random() * 2 + 2 + "s";
-                setTimeout(function () {
-                  return flake.classList.remove("active");
-                }, 0);
-              }
-            };
-
-            for (var _iterator = flakes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-              _loop2();
-            }
-          } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
-          }
-
-          ["j", "o", "y"].forEach(function (letter) {
-            var joy = _this2.$el.querySelectorAll(".joy-word [data-letter=\"".concat(letter, "\"]"));
-
-            var duration = 1 - Math.random() * 2 + 2 + "s";
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-              var _loop = function _loop() {
-                var letter = _step2.value;
-
-                if (letter.classList.contains("active")) {
-                  letter.style.transitionDuration = duration;
-                  setTimeout(function () {
-                    return letter.classList.remove("active");
-                  }, 1);
-                }
-              };
-
-              for (var _iterator2 = joy[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                _loop();
-              }
-            } catch (err) {
-              _didIteratorError2 = true;
-              _iteratorError2 = err;
-            } finally {
-              try {
-                if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                  _iterator2.return();
-                }
-              } finally {
-                if (_didIteratorError2) {
-                  throw _iteratorError2;
-                }
-              }
-            }
-          });
-          break;
-
-        case 2:
-          this.$el.querySelector(".message").classList.remove("active");
-          this.$el.querySelector(".background").classList.remove("active");
-
-        case 3: // this.$el.querySelector('.chain').classList.remove('active');
-
-      }
-
-      setTimeout(function () {
-        switch (current) {
+      (function () {
+        switch (last) {
           case 1:
-            _this2.$el.querySelector(".background").classList.add("active");
-
-            _this2.$el.querySelector(".message").classList.remove("active");
-
-            _this2.$el.querySelector(".chain").classList.add("active");
-
-            var _flakes = _this2.$el.querySelectorAll(".snowflakes .layer");
+            var flakes = _this3.$el.querySelectorAll(".snowflakes > .layer");
 
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
 
             try {
-              for (var _iterator3 = _flakes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+              var _loop3 = function _loop3() {
                 var flake = _step3.value;
 
-                if (!flake.classList.contains("active")) {
+                if (flake.classList.contains("active")) {
                   flake.style.transitionDuration = 1 - Math.random() * 2 + 2 + "s";
-                  flake.classList.add("active");
+                  setTimeout(function () {
+                    return flake.classList.remove("active");
+                  }, 0);
                 }
+              };
+
+              for (var _iterator3 = flakes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                _loop3();
               }
             } catch (err) {
               _didIteratorError3 = true;
@@ -10797,22 +10773,27 @@ var _default = {
             }
 
             ["j", "o", "y"].forEach(function (letter) {
-              var joy = _this2.$el.querySelectorAll(".joy-word [data-letter=\"".concat(letter, "\"]"));
+              var joy = _this3.$el.querySelectorAll(".joy-word [data-letter=\"".concat(letter, "\"]"));
 
-              var duration = 1 - Math.random() * 1 + 2 + "s";
+              var duration = 1 - Math.random() * 2 + 2 + "s";
               var _iteratorNormalCompletion4 = true;
               var _didIteratorError4 = false;
               var _iteratorError4 = undefined;
 
               try {
-                for (var _iterator4 = joy[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                  var _letter = _step4.value;
+                var _loop2 = function _loop2() {
+                  var letter = _step4.value;
 
-                  if (!_letter.classList.contains("active")) {
-                    _letter.style.transitionDuration = duration;
-
-                    _letter.classList.add("active");
+                  if (letter.classList.contains("active")) {
+                    letter.style.transitionDuration = duration;
+                    setTimeout(function () {
+                      return letter.classList.remove("active");
+                    }, 1);
                   }
+                };
+
+                for (var _iterator4 = joy[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                  _loop2();
                 }
               } catch (err) {
                 _didIteratorError4 = true;
@@ -10829,24 +10810,161 @@ var _default = {
                 }
               }
             });
-            setTimeout(function () {
-              _this2.enableArrows(['down']);
-            }, 1500);
             break;
 
           case 2:
-            _this2.$el.querySelector(".background").classList.add("active");
+            _this3.$el.querySelector(".message").classList.remove("active");
 
-            _this2.$el.querySelector(".chain").classList.add("active");
+            if (current == 3) {
+              _this3.$el.querySelector(".background").classList.remove("active");
 
-            _this2.$el.querySelector(".message").classList.add("active");
-
-            _this2.enableArrows(['up', 'right']);
+              _this3.$el.querySelector(".chain").classList.remove("active");
+            }
 
             break;
 
           case 3:
-            _this2.enableArrows(['left']);
+            _this3.$el.querySelector(".learn-more .video-background").classList.remove('active');
+
+            _this3.$el.querySelector(".learn-more .copy").classList.remove('active');
+
+            _this3.$el.querySelector(".learn-more .main-area").classList.remove('active');
+
+            var paragraphs = _this3.$el.querySelectorAll(".learn-more .copy p");
+
+            var _loop4 = function _loop4(i) {
+              setTimeout(function () {
+                paragraphs[i].classList.remove('active');
+              }, i * 0);
+            };
+
+            for (var i = paragraphs.length; i > -1; i--) {
+              _loop4(i);
+            }
+
+            setTimeout(function () {
+              _this3.$el.querySelector(".learn-more .header").classList.remove('active');
+            }, 500);
+            setTimeout(function () {
+              _this3.$el.querySelector(".learn-more").classList.remove('active');
+            }, 2000);
+            break;
+        }
+      })();
+
+      setTimeout(function () {
+        switch (current) {
+          case 1:
+            _this3.$el.querySelector(".background").classList.add("active");
+
+            _this3.$el.querySelector(".message").classList.remove("active");
+
+            _this3.$el.querySelector(".chain").classList.add("active");
+
+            var flakes = _this3.$el.querySelectorAll(".snowflakes .layer");
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+              for (var _iterator = flakes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var flake = _step.value;
+
+                if (!flake.classList.contains("active")) {
+                  flake.style.transitionDuration = 1 - Math.random() * 2 + 2 + "s";
+                  flake.classList.add("active");
+                }
+              }
+            } catch (err) {
+              _didIteratorError = true;
+              _iteratorError = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion && _iterator.return != null) {
+                  _iterator.return();
+                }
+              } finally {
+                if (_didIteratorError) {
+                  throw _iteratorError;
+                }
+              }
+            }
+
+            ["j", "o", "y"].forEach(function (letter) {
+              var joy = _this3.$el.querySelectorAll(".joy-word [data-letter=\"".concat(letter, "\"]"));
+
+              var duration = 1 - Math.random() * 1 + 2 + "s";
+              var _iteratorNormalCompletion2 = true;
+              var _didIteratorError2 = false;
+              var _iteratorError2 = undefined;
+
+              try {
+                for (var _iterator2 = joy[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                  var _letter = _step2.value;
+
+                  if (!_letter.classList.contains("active")) {
+                    _letter.style.transitionDuration = duration;
+
+                    _letter.classList.add("active");
+                  }
+                }
+              } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                    _iterator2.return();
+                  }
+                } finally {
+                  if (_didIteratorError2) {
+                    throw _iteratorError2;
+                  }
+                }
+              }
+            });
+            setTimeout(function () {
+              _this3.enableArrows(['down']);
+            }, 1500);
+            break;
+
+          case 2:
+            _this3.$el.querySelector(".background").classList.add("active");
+
+            _this3.$el.querySelector(".chain").classList.add("active");
+
+            _this3.$el.querySelector(".message").classList.add("active");
+
+            _this3.enableArrows(['up', 'right']);
+
+            break;
+
+          case 3:
+            _this3.$el.querySelector(".learn-more").classList.add('active');
+
+            _this3.$el.querySelector(".learn-more .header").classList.add('active');
+
+            setTimeout(function () {
+              _this3.$el.querySelector(".learn-more .main-area").classList.add('active');
+
+              _this3.$el.querySelector(".learn-more .video-background").classList.add('active');
+
+              var paragraphs = _this3.$el.querySelectorAll(".learn-more .copy p");
+
+              var _loop = function _loop(i) {
+                var p = paragraphs[i];
+                setTimeout(function () {
+                  p.classList.add('active');
+                }, i * 800);
+              };
+
+              for (var i = 0; i < paragraphs.length; i++) {
+                _loop(i);
+              }
+            }, 700);
+
+            _this3.enableArrows(['left']);
 
             break;
         }
@@ -10854,55 +10972,44 @@ var _default = {
     }
   },
   methods: {
+    lang: function lang(key) {
+      return languageStrings[this.language][key];
+    },
+    changeLanguage: function changeLanguage(key) {
+      this.language = key;
+    },
     onSwipe: function onSwipe(e) {
-      if (this.transition) {
+      if (this.transition || !e.detail || !e.detail.directions) {
         return;
       }
 
-      var flakes = this.$el.querySelectorAll(".snowflakes > *");
-      var _iteratorNormalCompletion5 = true;
-      var _didIteratorError5 = false;
-      var _iteratorError5 = undefined;
+      var directions = e.detail.directions;
 
-      try {
-        for (var _iterator5 = flakes[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-          var flake = _step5.value;
-
-          if (!flake.classList.contains("off")) {
-            flake.style.transitionDuration = 3 - Math.random() * 3 + 3 + "s";
-            flake.classList.add("off");
-          }
-        }
-      } catch (err) {
-        _didIteratorError5 = true;
-        _iteratorError5 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
-            _iterator5.return();
-          }
-        } finally {
-          if (_didIteratorError5) {
-            throw _iteratorError5;
-          }
-        }
+      if (directions.top) {
+        this.onArrow('down');
+      } else if (directions.bottom) {
+        this.onArrow('up');
+      } else if (directions.left) {
+        this.onArrow('right');
+      } else if (directions.right) {
+        this.onArrow('left');
       }
     },
     disableArrows: function disableArrows(directions) {
-      var _this3 = this;
+      var _this4 = this;
 
       directions.forEach(function (dir) {
-        var arrow = _this3.$el.querySelector(".arrow.".concat(dir));
+        var arrow = _this4.$el.querySelector(".arrow.".concat(dir));
 
         arrow.disabled = true;
         arrow.classList.remove('active');
       });
     },
     enableArrows: function enableArrows(directions) {
-      var _this4 = this;
+      var _this5 = this;
 
       directions.forEach(function (dir) {
-        var arrow = _this4.$el.querySelector(".arrow.".concat(dir));
+        var arrow = _this5.$el.querySelector(".arrow.".concat(dir));
 
         arrow.disabled = false;
         arrow.classList.add('active');
@@ -10952,8 +11059,6 @@ var _default = {
         return;
       }
 
-      console.log(e);
-
       if (e.wheelDelta && !('deltaX' in e)) {
         var normalized = e.wheelDelta % 120 - 0 == -0 ? e.wheelDelta / 120 : e.wheelDelta / 12;
 
@@ -10976,12 +11081,12 @@ var _default = {
         }
 
         if (axis == 'x') {
-          dir = e.deltaX < 0 ? 'right' : 'left'; // this.onArrow(e.deltaX<0?'right':'left')
+          dir = e.deltaX > 0 ? 'right' : 'left';
         } else if (axis == 'y') {
-          dir = e.deltaY < 0 ? 'up' : 'down'; // this.onArrow(e.deltaY<0?'down':'up')
+          dir = e.deltaY < 0 ? 'up' : 'down';
         }
 
-        console.log(axis, dir, e.deltaX, e.deltaY);
+        this.onArrow(dir);
       }
     },
     onArrow: function onArrow(dir) {
@@ -11148,8 +11253,13 @@ exports.default = _default;
           1
         )
       ]),
+      _c("li", { staticClass: "message" }, [
+        _c("div", {
+          staticClass: "message-copy",
+          domProps: { innerHTML: _vm._s(_vm.lang("message")) }
+        })
+      ]),
       _vm._m(1),
-      _vm._m(2),
       _c("li", { staticClass: "arrows" }, [
         _c(
           "button",
@@ -11217,7 +11327,7 @@ exports.default = _default;
         )
       ]),
       _c("li", { staticClass: "learn-more" }, [
-        _vm._m(3),
+        _vm._m(2),
         _c("div", { staticClass: "main-area" }, [
           _c("div", { staticClass: "video-background" }, [
             _c(
@@ -11242,8 +11352,33 @@ exports.default = _default;
               ]
             )
           ]),
-          _vm._m(4)
+          _c("div", {
+            staticClass: "copy",
+            domProps: { innerHTML: _vm._s(_vm.lang("nep")) }
+          })
         ])
+      ]),
+      _c("li", { staticClass: "language-switcher" }, [
+        _c(
+          "ul",
+          _vm._l(["en", "fr", "de"], function(l) {
+            return _c("li", [
+              _c(
+                "button",
+                {
+                  class: { selected: l == _vm.language },
+                  on: {
+                    click: function($event) {
+                      return _vm.changeLanguage(l)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(l.toUpperCase()))]
+              )
+            ])
+          }),
+          0
+        )
       ])
     ]
   )
@@ -11262,21 +11397,6 @@ var staticRenderFns = [
       ]),
       _c("div", { staticClass: "layer", attrs: { "data-depth": "0.1" } }, [
         _c("div", { staticClass: "horizon" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "message" }, [
-      _c("div", { staticClass: "message-copy" }, [
-        _c("p", [
-          _vm._v(
-            "Joy is appreciating what makes us unique, and celebrating our similarities,\ntogether, through community."
-          )
-        ]),
-        _c("p", [_vm._v("Happy Holidays to you and yours from ProAmpac.")])
       ])
     ])
   },
@@ -11316,35 +11436,6 @@ var staticRenderFns = [
         [_c("img", { attrs: { src: "/NEP-logo.9989b5ed.svg" } })]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copy" }, [
-      _c("p", { staticClass: "leading" }, [
-        _c("strong", [_vm._v("ProAmpac")]),
-        _vm._v(" and "),
-        _c("strong", [_vm._v("Northeast Passage")]),
-        _vm._v(" are doing good things every day.")
-      ]),
-      _c("p", [
-        _vm._v("We support "),
-        _c("strong", [_vm._v("Northeast Passage")]),
-        _vm._v(
-          " in their mission of helping together to provide barrier free recreation and health promotion programs for people with\n disabling conditions."
-        )
-      ]),
-      _c("p", [
-        _vm._v("Learn more about Northeast Passage at "),
-        _c(
-          "a",
-          { attrs: { href: "https://nepassage.org", target: "_blank" } },
-          [_vm._v("www.nepassage.org")]
-        ),
-        _vm._v(".")
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -11379,7 +11470,7 @@ render._withStripped = true
       
       }
     })();
-},{"parallax-js":"node_modules/parallax-js/dist/parallax.js","./Snowflake":"js/components/Snowflake.vue","./Letter":"js/components/Letter.vue","swipe-listener":"node_modules/swipe-listener/dist/swipe-listener.min.js","./../../img/chain_full.png":[["chain_full.7cae0003.png","img/chain_full.png"],"img/chain_full.png"],"./../../img/proampac-logo.svg":[["proampac-logo.b9751fbf.svg","img/proampac-logo.svg"],"img/proampac-logo.svg"],"./../../img/NEP-logo.svg":[["NEP-logo.9989b5ed.svg","img/NEP-logo.svg"],"img/NEP-logo.svg"],"./../../img/video-thumb.jpg":[["video-thumb.44eb3cb5.jpg","img/video-thumb.jpg"],"img/video-thumb.jpg"],"./../../img/NEP15_v3.mp4":[["NEP15_v3.778d6cef.mp4","img/NEP15_v3.mp4"],"img/NEP15_v3.mp4"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/index.js":[function(require,module,exports) {
+},{"parallax-js":"node_modules/parallax-js/dist/parallax.js","./Snowflake":"js/components/Snowflake.vue","./Letter":"js/components/Letter.vue","swipe-listener":"node_modules/swipe-listener/dist/swipe-listener.min.js","../lang/en":"js/lang/en.js","../lang/fr":"js/lang/fr.js","../lang/de":"js/lang/de.js","./../../img/chain_full.png":[["chain_full.7cae0003.png","img/chain_full.png"],"img/chain_full.png"],"./../../img/proampac-logo.svg":[["proampac-logo.b9751fbf.svg","img/proampac-logo.svg"],"img/proampac-logo.svg"],"./../../img/NEP-logo.svg":[["NEP-logo.9989b5ed.svg","img/NEP-logo.svg"],"img/NEP-logo.svg"],"./../../img/video-thumb.jpg":[["video-thumb.44eb3cb5.jpg","img/video-thumb.jpg"],"img/video-thumb.jpg"],"./../../img/NEP15_v3.mp4":[["NEP15_v3.778d6cef.mp4","img/NEP15_v3.mp4"],"img/NEP15_v3.mp4"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));

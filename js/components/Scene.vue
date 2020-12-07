@@ -53,12 +53,7 @@ ul#scene(:class="{ transition }", :data-scene="scene")
 
 	// Message
 	li.message
-		.message-copy
-			p Joy is appreciating what makes us unique, and celebrating our similarities,
-				|
-				| together, through community.
-
-			p Happy Holidays to you and yours from ProAmpac.
+		.message-copy(v-html="lang('message')")
 
 	// Chain
 	li.layer.chain-people(data-depth="0.5")
@@ -95,15 +90,19 @@ ul#scene(:class="{ transition }", :data-scene="scene")
 				video(playsinline autoplay muted loop poster="../../img/video-thumb.jpg")
 					source(src="../../img/NEP15_v3.mp4" type="video/webm")
 			
-			.copy
-				p.leading <strong>ProAmpac</strong> and <strong>Northeast Passage</strong> are doing good things every day.
-				p We support <strong>Northeast Passage</strong> in their mission of helping together
-					|  to provide barrier free recreation and health promotion programs for people with
-					|  disabling conditions.
-
-				p Learn more about Northeast Passage at <a href="https://nepassage.org" target="_blank">www.nepassage.org</a>.
+			.copy(
+				v-html="lang('nep')"
+			)
 		
-
+	li.language-switcher
+		ul
+			li(
+				v-for="l in ['en','fr','de']"
+			)
+				button(
+					:class="{selected: l == language}"
+					@click="changeLanguage(l)"
+				) {{ l.toUpperCase() }}
 </template>
 
 <script>
@@ -111,11 +110,18 @@ import Parallax from "parallax-js";
 import Snowflake from "./Snowflake";
 import Letter from "./Letter";
 import SwipeListener from "swipe-listener";
+import en from '../lang/en';
+import fr from '../lang/fr';
+import de from '../lang/de';
+
+const languageStrings = {en, fr, de};
+
 export default {
 	data() {
 		return {
 			scene: 0,
 			transition: false,
+			language: 'en'
 		};
 	},
 
@@ -128,7 +134,7 @@ export default {
 		this.parallax = new Parallax(this.$el, {
 			selector: ".layer",
 		});
-		this.swipeListener = new SwipeListener(document.body);
+		this.swipeListener = new SwipeListener(window);
 		this.swipeCallback = (e) => this.onSwipe(e);
 		this.wheelCallback = (e) => this.onWheel(e);
 		this.keyupCallback = (e) => this.onKeyup(e);
@@ -136,7 +142,7 @@ export default {
 		window.addEventListener("swipe", this.swipeCallback, false);
 		window.addEventListener("keyup", this.keyupCallback, false);
 		window.addEventListener(this.wheelEvent, this.wheelCallback, false);
-		this.scene = 1;
+		this.scene = 3;
 	},
 
 	destroy() {
@@ -153,6 +159,17 @@ export default {
 	},
 
 	watch: {
+		language(key){
+			if( this.scene==3 ){
+				// apply active to all the paragraphs
+				setTimeout(() => {
+					const paragraphs = this.$el.querySelectorAll('.learn-more .copy p');
+					for( var i =0; i < paragraphs.length; i++){
+						paragraphs[i].classList.add('active');
+					}
+				},0);
+			}
+		},
 		scene(current, last) {
 			if( current == undefined ){
 				return;
@@ -188,10 +205,29 @@ export default {
 
 				case 2:
 					this.$el.querySelector(".message").classList.remove("active");
-					this.$el.querySelector(".background").classList.remove("active");
+					if( current == 3 ){
+						this.$el.querySelector(".background").classList.remove("active");
+						this.$el.querySelector(".chain").classList.remove("active");
+					}
+					break;
 
 				case 3:
-					// this.$el.querySelector('.chain').classList.remove('active');
+					this.$el.querySelector(".learn-more .video-background").classList.remove('active');
+					this.$el.querySelector(".learn-more .copy").classList.remove('active');
+					this.$el.querySelector(".learn-more .main-area").classList.remove('active');
+					const paragraphs = this.$el.querySelectorAll(".learn-more .copy p");
+					for( let i = paragraphs.length; i > -1; i-- ){
+						setTimeout(() => {
+							paragraphs[i].classList.remove('active');
+						}, i * 0);
+					}
+					setTimeout(() => {
+						this.$el.querySelector(".learn-more .header").classList.remove('active');
+					}, 500);
+					setTimeout(() => {
+						this.$el.querySelector(".learn-more").classList.remove('active');
+					},2000);
+					break;
 			}
 			setTimeout(() => {
 				switch (current) {
@@ -233,6 +269,20 @@ export default {
 						break;
 
 					case 3:
+						this.$el.querySelector(".learn-more").classList.add('active');
+						this.$el.querySelector(".learn-more .header").classList.add('active');
+						setTimeout(() => {
+							this.$el.querySelector(".learn-more .main-area").classList.add('active');
+							this.$el.querySelector(".learn-more .video-background").classList.add('active');
+							const paragraphs = this.$el.querySelectorAll(".learn-more .copy p");
+							for( let i=0; i<paragraphs.length; i++){
+								const p = paragraphs[i];
+								setTimeout( () => {
+									p.classList.add('active');
+								}, i * 800 );
+							}
+							
+						},700);
 						this.enableArrows(['left']);
 						break;
 				}
@@ -241,16 +291,28 @@ export default {
 	},
 
 	methods: {
+		lang(key) {
+			return languageStrings[this.language][key];
+		},
+		changeLanguage(key){
+			this.language = key;
+		},
 		onSwipe(e) {
-			if (this.transition) {
+			if (this.transition || !e.detail || !e.detail.directions ) {
 				return;
 			}
-			const flakes = this.$el.querySelectorAll(".snowflakes > *");
-			for (let flake of flakes) {
-				if (!flake.classList.contains("off")) {
-					flake.style.transitionDuration = 3 - Math.random() * 3 + 3 + "s";
-					flake.classList.add("off");
-				}
+			const directions = e.detail.directions;
+			if( directions.top ){
+				this.onArrow('down');
+			}
+			else if( directions.bottom ){
+				this.onArrow('up');
+			}
+			else if( directions.left ){
+				this.onArrow('right');
+			}
+			else if( directions.right ){
+				this.onArrow('left');
 			}
 		},
 		disableArrows( directions ){
@@ -303,7 +365,6 @@ export default {
 			if (this.transition) {
 				return;
 			}
-			console.log(e);
 			if (e.wheelDelta && !('deltaX' in e) ) {
 				let normalized = (e.wheelDelta % 120 - 0) == -0 ? e.wheelDelta / 120 : e.wheelDelta / 12;
 				if( normalized > 1 ){
@@ -324,14 +385,12 @@ export default {
 					return;
 				}
 				if( axis == 'x'){
-					dir = e.deltaX<0?'right':'left';	
-					// this.onArrow(e.deltaX<0?'right':'left')
+					dir = e.deltaX>0?'right':'left';	
 				}
 				else if( axis == 'y'){
 					dir = e.deltaY<0?'up':'down'
-					// this.onArrow(e.deltaY<0?'down':'up')
 				}
-				console.log(axis, dir, e.deltaX, e.deltaY);
+				this.onArrow(dir);
 			}
 			
 		},
@@ -440,15 +499,10 @@ a {
 .learn-more {
 	display: flex;
 	flex-direction: column;
-	transition: 1s opacity;
-	transition-delay: 0s !important;
-	top: -100vh;
-	opacity: 0;
-	[data-scene="3"] & {
-		transition-delay: 1s;
-		opacity: 1;
-		top: auto;
-		
+	margin-top: -100vh;
+	
+	&.active {
+		margin-top: 0;
 	}
 	.header {
 		pointer-events: auto;
@@ -462,15 +516,38 @@ a {
 		justify-content: center;
 		align-items: center;
 		@include font-size(1.5rem);
+		transition: 800ms transform;
+		&:not(.active){
+			transform: translateY(-100%);
+		}
+		@media(max-width: 700px){
+			height: auto;
+			flex-direction: column;
+		}
+
 		img {
 			height: 5em;
 			width: auto;
+			@media(max-width: 700px){
+				height: 4em;
+				display: block;
+			}
+		}
+		a {
+			display: block;
+			padding: 1em 0;
 		}
 		a + a {
 			margin-left: 1em;
+			@media(max-width: 700px){
+				margin-left: 0;
+			}
 		}
 		.proampac-logo img {
 			height: 2.6em;
+			@media(max-width: 700px){
+				height: 2em;
+			}
 		}
 	}
 	.main-area {
@@ -489,17 +566,32 @@ a {
 			height: 100%;
 			background-color: rgba(0,0,0,0.4);
 			mix-blend-mode: multiply;
+			transition: 1s;
+		}
+		&:not(.active):after {
+			opacity: 0;
 		}
 		.copy {
 			font-weight: 300;
 			pointer-events: auto;
-			font-family: "Proxima Nova", sans-serif;
+			font-family: proxima-nova, sans-serif;
 			position: relative;
 			z-index: 100;
 			max-width: 80vw;
 			width: 40em;
 			text-shadow: 0 1px 10px rgba(#000, 0.4);
-			@include font-size(2rem);
+			p {
+				transition: 1s opacity, 1s transform;	
+				&:not(.active){
+					opacity: 0;
+					transform: translateY(1rem);
+				}
+			}			
+			@include font-size(1.8rem);
+			line-height: 1.5;
+			@media( max-width: 700px){
+				@include font-size(1.2rem);
+			}
 			p { 
 				margin-bottom: 1em;
 			}
@@ -514,10 +606,10 @@ a {
 		left: 0;
 		width: 100%;
 		height: 100%;
-		opacity: 0;
-		transition: 1s opacity;
-		[data-scene="3"] & {
-			opacity: 1;
+		transition: 0.5s opacity;
+		display: block;
+		&:not(.active){
+			opacity: 0;
 		}
 		video {
 			object-fit: cover;
@@ -575,7 +667,7 @@ a {
 	}
 	animation: swinging 4.5s -2s ease-in-out backwards infinite;
 	.rope {
-		@include rfs(12rem, height);
+		@include rfs(16rem, height);
 	}
 }
 .snowflake-2 {
@@ -594,13 +686,13 @@ a {
 }
 .snowflake-3 {
 	@include margin-left(-30rem);
-	width: 10rem;
+	@include rfs(10rem, width);
 	@media( max-width: 700px ){
 		@include rfs(8rem, width);
 	}
 	animation: swinging 4s -0.5s ease-in-out forwards infinite;
 	.rope {
-		height: 10rem;
+		@include rfs(16rem, height);
 		@media( max-width: 700px ){
 			@include rfs(30rem, height);
 		}
@@ -609,7 +701,7 @@ a {
 
 .snowflake-4 {
 	@include margin-left(-12rem);
-	width: 8rem;
+	@include rfs(8rem, width);
 	@media( max-width: 700px ){
 		@include rfs(10rem, width);
 	}
@@ -617,34 +709,52 @@ a {
 	.rope {
 		height: 12rem;
 		@media( max-width: 700px ){
-			@include rfs(28rem, height);
+			@include rfs(40rem, height);
 		}
 	}
 }
 
 .snowflake-5 {
 	@include margin-left(0rem);
-	width: 10rem;
+	@include rfs(10rem, width);
+	@media( max-width: 700px ){
+		@include rfs(6rem, width);
+	}
 	animation: swinging 4s ease-in-out forwards infinite;
 	.rope {
 		height: 15rem;
+		@media( max-width: 700px ){
+			@include rfs(34rem, height);
+		}
 	}
 }
 .snowflake-6 {
 	@include margin-left(15rem);
-	width: 14rem;
+	@include rfs(16rem, width);
+	@media( max-width: 700px ){
+		@include rfs(8rem, width);
+	}
 	animation: swinging 8.5s -1s ease-in-out backwards infinite;
 	.rope {
-		height: 15rem;
+		@include rfs(13rem, height);
+		@media( max-width: 700px ){
+			@include rfs(30rem, height);
+		}
 	}
 }
 
 .snowflake-7 {
 	@include margin-left(34rem);
-	width: 12rem;
+	@include rfs(12rem, width);
+	@media( max-width: 700px ){
+		@include rfs(7rem, width);
+	}
 	animation: swinging 4.5s -2.5s ease-in-out backwards infinite;
 	.rope {
 		@include rfs(24rem, height);
+		@media( max-width: 700px ){
+			@include rfs(44rem, height);
+		}
 	}
 }
 
@@ -653,6 +763,9 @@ a {
 	@include rfs(9rem, width);
 	animation: swinging 4.5s -1.3s ease-in-out backwards infinite;
 	.rope {
+		@media( max-width: 700px ){
+			@include rfs(36rem, height);
+		}
 		@include rfs(12rem, height);
 	}
 }
@@ -666,13 +779,17 @@ a {
 	left: 50%;
 	width: 80rem;
 	transform: translate(-50%, 0%);
-	transition: 2s margin-bottom ease-in-out;
+	transition: 1s margin-bottom ease-in-out;
 	&:not(.active) {
-		margin-bottom: -150%;
+		margin-bottom: -100%;
 	}
 	img {
 		width: 100%;
 		max-width: 100vw;
+		@media( max-height: 50rem ){
+			width: auto;
+			max-height: 40vh;
+		}
 	}
 }
 .message {
@@ -692,6 +809,9 @@ a {
 		text-shadow: 0 1px 10px rgba(#000, 0.1);
 		p {
 			margin-bottom: 1em;
+		}
+		@media( max-height: 50rem ){
+			top: 10%;
 		}
 	}
 }
@@ -752,6 +872,31 @@ a {
 			&:not(.active){
 				margin-right: -150%;
 			}
+		}
+	}
+}
+.language-switcher > ul {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	display: flex;
+	margin-right: -0.5rem;
+	li {
+		display: block;
+		list-style: none;
+		flex-shrink: 0;
+		padding: 0 0.2rem;
+	}
+	button {
+		pointer-events: auto;
+		background: transparent;
+		border-width: 0;
+		color: #fff;
+		font-family: proxima-nova, sans-serif;
+		font-weight: 200;
+		cursor: pointer;
+		&.selected {
+			font-weight: 600;
 		}
 	}
 }

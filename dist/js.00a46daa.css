@@ -207,15 +207,10 @@ a {
 .learn-more {
   display: flex;
   flex-direction: column;
-  transition: 1s opacity;
-  transition-delay: 0s !important;
-  top: -100vh;
-  opacity: 0;
+  margin-top: -100vh;
 }
-[data-scene="3"] .learn-more {
-  transition-delay: 1s;
-  opacity: 1;
-  top: auto;
+.learn-more.active {
+  margin-top: 0;
 }
 .learn-more .header {
   pointer-events: auto;
@@ -229,21 +224,51 @@ a {
   justify-content: center;
   align-items: center;
   font-size: calc(1.275rem + 0.3vw);
+  transition: 800ms transform;
 }
 @media (min-width: 1200px) {
   .learn-more .header {
     font-size: 1.5rem;
   }
 }
+.learn-more .header:not(.active) {
+  transform: translateY(-100%);
+}
+@media (max-width: 700px) {
+  .learn-more .header {
+    height: auto;
+    flex-direction: column;
+  }
+}
 .learn-more .header img {
   height: 5em;
   width: auto;
 }
+@media (max-width: 700px) {
+  .learn-more .header img {
+    height: 4em;
+    display: block;
+  }
+}
+.learn-more .header a {
+  display: block;
+  padding: 1em 0;
+}
 .learn-more .header a + a {
   margin-left: 1em;
 }
+@media (max-width: 700px) {
+  .learn-more .header a + a {
+    margin-left: 0;
+  }
+}
 .learn-more .header .proampac-logo img {
   height: 2.6em;
+}
+@media (max-width: 700px) {
+  .learn-more .header .proampac-logo img {
+    height: 2em;
+  }
 }
 .learn-more .main-area {
   flex: 1;
@@ -262,21 +287,38 @@ a {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   mix-blend-mode: multiply;
+  transition: 1s;
+}
+.learn-more .main-area:not(.active):after {
+  opacity: 0;
 }
 .learn-more .main-area .copy {
   font-weight: 300;
   pointer-events: auto;
-  font-family: "Proxima Nova", sans-serif;
+  font-family: proxima-nova, sans-serif;
   position: relative;
   z-index: 100;
   max-width: 80vw;
   width: 40em;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
-  font-size: calc(1.325rem + 0.9vw);
+  font-size: calc(1.305rem + 0.66vw);
+  line-height: 1.5;
+}
+.learn-more .main-area .copy p {
+  transition: 1s opacity, 1s transform;
+}
+.learn-more .main-area .copy p:not(.active) {
+  opacity: 0;
+  transform: translateY(1rem);
 }
 @media (min-width: 1200px) {
   .learn-more .main-area .copy {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 700px) {
+  .learn-more .main-area .copy {
+    font-size: 1.2rem;
   }
 }
 .learn-more .main-area .copy p {
@@ -291,11 +333,11 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: 1s opacity;
+  transition: 0.5s opacity;
+  display: block;
 }
-[data-scene="3"] .learn-more .video-background {
-  opacity: 1;
+.learn-more .video-background:not(.active) {
+  opacity: 0;
 }
 .learn-more .video-background video {
   object-fit: cover;
@@ -368,11 +410,11 @@ a {
   }
 }
 .snowflake-1 .rope {
-  height: calc(2.325rem + 12.9vw);
+  height: calc(2.725rem + 17.7vw);
 }
 @media (min-width: 1200px) {
   .snowflake-1 .rope {
-    height: 12rem;
+    height: 16rem;
   }
 }
 
@@ -422,12 +464,17 @@ a {
 
 .snowflake-3 {
   margin-left: calc(-4.125rem - 34.5vw);
-  width: 10rem;
+  width: calc(2.125rem + 10.5vw);
   animation: swinging 4s -0.5s ease-in-out forwards infinite;
 }
 @media (min-width: 1200px) {
   .snowflake-3 {
     margin-left: -30rem;
+  }
+}
+@media (min-width: 1200px) {
+  .snowflake-3 {
+    width: 10rem;
   }
 }
 @media (max-width: 700px) {
@@ -441,7 +488,12 @@ a {
   }
 }
 .snowflake-3 .rope {
-  height: 10rem;
+  height: calc(2.725rem + 17.7vw);
+}
+@media (min-width: 1200px) {
+  .snowflake-3 .rope {
+    height: 16rem;
+  }
 }
 @media (max-width: 700px) {
   .snowflake-3 .rope {
@@ -456,12 +508,17 @@ a {
 
 .snowflake-4 {
   margin-left: calc(-2.325rem - 12.9vw);
-  width: 8rem;
+  width: calc(1.925rem + 8.1vw);
   animation: swinging 5.5s -3s ease-in-out backwards infinite;
 }
 @media (min-width: 1200px) {
   .snowflake-4 {
     margin-left: -12rem;
+  }
+}
+@media (min-width: 1200px) {
+  .snowflake-4 {
+    width: 8rem;
   }
 }
 @media (max-width: 700px) {
@@ -479,27 +536,52 @@ a {
 }
 @media (max-width: 700px) {
   .snowflake-4 .rope {
-    height: calc(3.925rem + 32.1vw);
+    height: calc(5.125rem + 46.5vw);
   }
 }
 @media (max-width: 700px) and (min-width: 1200px) {
   .snowflake-4 .rope {
-    height: 28rem;
+    height: 40rem;
   }
 }
 
 .snowflake-5 {
   margin-left: 0rem;
-  width: 10rem;
+  width: calc(2.125rem + 10.5vw);
   animation: swinging 4s ease-in-out forwards infinite;
+}
+@media (min-width: 1200px) {
+  .snowflake-5 {
+    width: 10rem;
+  }
+}
+@media (max-width: 700px) {
+  .snowflake-5 {
+    width: calc(1.725rem + 5.7vw);
+  }
+}
+@media (max-width: 700px) and (min-width: 1200px) {
+  .snowflake-5 {
+    width: 6rem;
+  }
 }
 .snowflake-5 .rope {
   height: 15rem;
 }
+@media (max-width: 700px) {
+  .snowflake-5 .rope {
+    height: calc(4.525rem + 39.3vw);
+  }
+}
+@media (max-width: 700px) and (min-width: 1200px) {
+  .snowflake-5 .rope {
+    height: 34rem;
+  }
+}
 
 .snowflake-6 {
   margin-left: calc(2.625rem + 16.5vw);
-  width: 14rem;
+  width: calc(2.725rem + 17.7vw);
   animation: swinging 8.5s -1s ease-in-out backwards infinite;
 }
 @media (min-width: 1200px) {
@@ -507,18 +589,63 @@ a {
     margin-left: 15rem;
   }
 }
+@media (min-width: 1200px) {
+  .snowflake-6 {
+    width: 16rem;
+  }
+}
+@media (max-width: 700px) {
+  .snowflake-6 {
+    width: calc(1.925rem + 8.1vw);
+  }
+}
+@media (max-width: 700px) and (min-width: 1200px) {
+  .snowflake-6 {
+    width: 8rem;
+  }
+}
 .snowflake-6 .rope {
-  height: 15rem;
+  height: calc(2.425rem + 14.1vw);
+}
+@media (min-width: 1200px) {
+  .snowflake-6 .rope {
+    height: 13rem;
+  }
+}
+@media (max-width: 700px) {
+  .snowflake-6 .rope {
+    height: calc(4.125rem + 34.5vw);
+  }
+}
+@media (max-width: 700px) and (min-width: 1200px) {
+  .snowflake-6 .rope {
+    height: 30rem;
+  }
 }
 
 .snowflake-7 {
   margin-left: calc(4.525rem + 39.3vw);
-  width: 12rem;
+  width: calc(2.325rem + 12.9vw);
   animation: swinging 4.5s -2.5s ease-in-out backwards infinite;
 }
 @media (min-width: 1200px) {
   .snowflake-7 {
     margin-left: 34rem;
+  }
+}
+@media (min-width: 1200px) {
+  .snowflake-7 {
+    width: 12rem;
+  }
+}
+@media (max-width: 700px) {
+  .snowflake-7 {
+    width: calc(1.825rem + 6.9vw);
+  }
+}
+@media (max-width: 700px) and (min-width: 1200px) {
+  .snowflake-7 {
+    width: 7rem;
   }
 }
 .snowflake-7 .rope {
@@ -527,6 +654,16 @@ a {
 @media (min-width: 1200px) {
   .snowflake-7 .rope {
     height: 24rem;
+  }
+}
+@media (max-width: 700px) {
+  .snowflake-7 .rope {
+    height: calc(5.525rem + 51.3vw);
+  }
+}
+@media (max-width: 700px) and (min-width: 1200px) {
+  .snowflake-7 .rope {
+    height: 44rem;
   }
 }
 
@@ -548,6 +685,16 @@ a {
 .snowflake-8 .rope {
   height: calc(2.325rem + 12.9vw);
 }
+@media (max-width: 700px) {
+  .snowflake-8 .rope {
+    height: calc(4.725rem + 41.7vw);
+  }
+}
+@media (max-width: 700px) and (min-width: 1200px) {
+  .snowflake-8 .rope {
+    height: 36rem;
+  }
+}
 @media (min-width: 1200px) {
   .snowflake-8 .rope {
     height: 12rem;
@@ -565,14 +712,20 @@ a {
   left: 50%;
   width: 80rem;
   transform: translate(-50%, 0%);
-  transition: 2s margin-bottom ease-in-out;
+  transition: 1s margin-bottom ease-in-out;
 }
 .chain:not(.active) {
-  margin-bottom: -150%;
+  margin-bottom: -100%;
 }
 .chain img {
   width: 100%;
   max-width: 100vw;
+}
+@media (max-height: 50rem) {
+  .chain img {
+    width: auto;
+    max-height: 40vh;
+  }
 }
 
 .message {
@@ -599,6 +752,11 @@ a {
 }
 .message-copy p {
   margin-bottom: 1em;
+}
+@media (max-height: 50rem) {
+  .message-copy {
+    top: 10%;
+  }
 }
 
 .arrows {
@@ -674,6 +832,32 @@ a {
 }
 .arrows .arrow.right:not(.active) {
   margin-right: -150%;
+}
+
+.language-switcher > ul {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  margin-right: -0.5rem;
+}
+.language-switcher > ul li {
+  display: block;
+  list-style: none;
+  flex-shrink: 0;
+  padding: 0 0.2rem;
+}
+.language-switcher > ul button {
+  pointer-events: auto;
+  background: transparent;
+  border-width: 0;
+  color: #fff;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 200;
+  cursor: pointer;
+}
+.language-switcher > ul button.selected {
+  font-weight: 600;
 }
 
 @keyframes swinging {
