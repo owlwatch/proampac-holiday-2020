@@ -142,7 +142,7 @@ export default {
 		window.addEventListener("swipe", this.swipeCallback, false);
 		window.addEventListener("keyup", this.keyupCallback, false);
 		window.addEventListener(this.wheelEvent, this.wheelCallback, false);
-		this.scene = 3;
+		this.scene = 1;
 	},
 
 	destroy() {
@@ -500,7 +500,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	margin-top: -100vh;
-	
+
 	&.active {
 		margin-top: 0;
 	}
