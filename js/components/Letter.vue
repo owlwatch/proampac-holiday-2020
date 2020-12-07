@@ -71,6 +71,9 @@ export default {
 .letter {
 	font-size: 18rem;
 	@media( max-width: 600px ){
+		font-size: 9rem;
+	}
+	@media( max-width: 800px ){
 		font-size: 10rem;
 	}
 	$baseLetterWidth: 1em;

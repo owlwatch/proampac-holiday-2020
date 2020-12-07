@@ -511,7 +511,7 @@ a {
 		padding-bottom: 1rem;
 		flex-shrink: 0;
 		text-align: center;
-		height: 10rem;
+		
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -522,31 +522,34 @@ a {
 		}
 		@media(max-width: 700px){
 			height: auto;
-			flex-direction: column;
+			padding-top: 0;
+			padding-bottom: 0;
 		}
 
 		img {
 			height: 5em;
 			width: auto;
+			@media(max-width: 600px){
+				height: 1em;
+			}
 			@media(max-width: 700px){
-				height: 4em;
-				display: block;
+				height: 3em;
 			}
 		}
 		a {
 			display: block;
-			padding: 1em 0;
+			padding: 0.5em 0;
 		}
 		a + a {
-			margin-left: 1em;
-			@media(max-width: 700px){
-				margin-left: 0;
-			}
+			
 		}
 		.proampac-logo img {
 			height: 2.6em;
 			@media(max-width: 700px){
 				height: 2em;
+			}
+			@media(max-width: 600px){
+				height: 1.25em;
 			}
 		}
 	}
@@ -850,25 +853,25 @@ a {
 			transform: translateY(-50%);
 		}
 		&.up {
-			top: 1rem;
+			top: 0.25rem;
 			&:not(.active){
 				margin-top: -150%;
 			}
 		}
 		&.down {
-			bottom: 1rem;
+			bottom: 0.25rem;
 			&:not(.active){
 				margin-bottom: -150%;
 			}
 		}
 		&.left {
-			left: 1rem;
+			left: 0.25rem;
 			&:not(.active){
 				margin-left: -150%;
 			}
 		}
 		&.right {
-			right: 1rem;
+			right: 0.25rem;
 			&:not(.active){
 				margin-right: -150%;
 			}

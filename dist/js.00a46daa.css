@@ -44,6 +44,11 @@
 }
 @media (max-width: 600px) {
   .letter {
+    font-size: 9rem;
+  }
+}
+@media (max-width: 800px) {
+  .letter {
     font-size: 10rem;
   }
 }
@@ -219,7 +224,6 @@ a {
   padding-bottom: 1rem;
   flex-shrink: 0;
   text-align: center;
-  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -237,30 +241,27 @@ a {
 @media (max-width: 700px) {
   .learn-more .header {
     height: auto;
-    flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 .learn-more .header img {
   height: 5em;
   width: auto;
 }
+@media (max-width: 600px) {
+  .learn-more .header img {
+    height: 1em;
+  }
+}
 @media (max-width: 700px) {
   .learn-more .header img {
-    height: 4em;
-    display: block;
+    height: 3em;
   }
 }
 .learn-more .header a {
   display: block;
-  padding: 1em 0;
-}
-.learn-more .header a + a {
-  margin-left: 1em;
-}
-@media (max-width: 700px) {
-  .learn-more .header a + a {
-    margin-left: 0;
-  }
+  padding: 0.5em 0;
 }
 .learn-more .header .proampac-logo img {
   height: 2.6em;
@@ -268,6 +269,11 @@ a {
 @media (max-width: 700px) {
   .learn-more .header .proampac-logo img {
     height: 2em;
+  }
+}
+@media (max-width: 600px) {
+  .learn-more .header .proampac-logo img {
+    height: 1.25em;
   }
 }
 .learn-more .main-area {
@@ -810,25 +816,25 @@ a {
   transform: translateY(-50%);
 }
 .arrows .arrow.up {
-  top: 1rem;
+  top: 0.25rem;
 }
 .arrows .arrow.up:not(.active) {
   margin-top: -150%;
 }
 .arrows .arrow.down {
-  bottom: 1rem;
+  bottom: 0.25rem;
 }
 .arrows .arrow.down:not(.active) {
   margin-bottom: -150%;
 }
 .arrows .arrow.left {
-  left: 1rem;
+  left: 0.25rem;
 }
 .arrows .arrow.left:not(.active) {
   margin-left: -150%;
 }
 .arrows .arrow.right {
-  right: 1rem;
+  right: 0.25rem;
 }
 .arrows .arrow.right:not(.active) {
   margin-right: -150%;
