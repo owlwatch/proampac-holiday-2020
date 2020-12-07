@@ -719,7 +719,7 @@ a {
   left: 50%;
   width: 80rem;
   transform: translate(-50%, 0%);
-  transition: 1s margin-bottom ease-in-out;
+  transition: 1s margin ease-in-out;
 }
 .chain:not(.active) {
   margin-bottom: -100%;
@@ -746,6 +746,10 @@ a {
 .message:not(.active) .message-copy {
   opacity: 0;
   margin-top: 3em;
+}
+.message.left .message-copy {
+  margin-left: -100vw;
+  margin-top: 0 !important;
 }
 .message-copy {
   transition: margin 1s, opacity 1s;

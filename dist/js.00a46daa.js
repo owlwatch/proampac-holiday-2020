@@ -10813,13 +10813,15 @@ var _default = {
             break;
 
           case 2:
-            _this3.$el.querySelector(".message").classList.remove("active");
-
             if (current == 3) {
               _this3.$el.querySelector(".background").classList.remove("active");
 
+              _this3.$el.querySelector(".message").classList.add("left");
+
               _this3.$el.querySelector(".chain").classList.remove("active");
             }
+
+            _this3.$el.querySelector(".message").classList.remove("active");
 
             break;
 
@@ -10829,6 +10831,8 @@ var _default = {
             _this3.$el.querySelector(".learn-more .copy").classList.remove('active');
 
             _this3.$el.querySelector(".learn-more .main-area").classList.remove('active');
+
+            _this3.$el.querySelector(".message").classList.add("left");
 
             var paragraphs = _this3.$el.querySelectorAll(".learn-more .copy p");
 
@@ -10933,6 +10937,10 @@ var _default = {
             _this3.$el.querySelector(".background").classList.add("active");
 
             _this3.$el.querySelector(".chain").classList.add("active");
+
+            if (last == 3) {
+              _this3.$el.querySelector(".message").classList.remove("left");
+            }
 
             _this3.$el.querySelector(".message").classList.add("active");
 

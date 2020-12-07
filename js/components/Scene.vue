@@ -204,17 +204,21 @@ export default {
 					break;
 
 				case 2:
-					this.$el.querySelector(".message").classList.remove("active");
+					
 					if( current == 3 ){
 						this.$el.querySelector(".background").classList.remove("active");
+						this.$el.querySelector(".message").classList.add("left");
 						this.$el.querySelector(".chain").classList.remove("active");
+
 					}
+					this.$el.querySelector(".message").classList.remove("active");
 					break;
 
 				case 3:
 					this.$el.querySelector(".learn-more .video-background").classList.remove('active');
 					this.$el.querySelector(".learn-more .copy").classList.remove('active');
 					this.$el.querySelector(".learn-more .main-area").classList.remove('active');
+					this.$el.querySelector(".message").classList.add("left");
 					const paragraphs = this.$el.querySelectorAll(".learn-more .copy p");
 					for( let i = paragraphs.length; i > -1; i-- ){
 						setTimeout(() => {
@@ -263,7 +267,11 @@ export default {
 
 					case 2:
 						this.$el.querySelector(".background").classList.add("active");
+						
 						this.$el.querySelector(".chain").classList.add("active");
+						if( last == 3 ){
+							this.$el.querySelector(".message").classList.remove("left");
+						}
 						this.$el.querySelector(".message").classList.add("active");
 						this.enableArrows(['up','right']);
 						break;
@@ -782,7 +790,7 @@ a {
 	left: 50%;
 	width: 80rem;
 	transform: translate(-50%, 0%);
-	transition: 1s margin-bottom ease-in-out;
+	transition: 1s margin ease-in-out;
 	&:not(.active) {
 		margin-bottom: -100%;
 	}
@@ -800,6 +808,10 @@ a {
 	&:not(.active) &-copy {
 		opacity: 0;
 		margin-top: 3em;
+	}
+	&.left &-copy{
+		margin-left: -100vw;
+		margin-top: 0 !important;
 	}
 	&-copy {
 		transition: margin 1s, opacity 1s;
