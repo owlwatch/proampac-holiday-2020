@@ -42,14 +42,14 @@
   left: 50%;
   transform: translateX(-50%);
 }
+@media (max-width: 800px) {
+  .letter {
+    font-size: 12rem;
+  }
+}
 @media (max-width: 600px) {
   .letter {
     font-size: 9rem;
-  }
-}
-@media (max-width: 800px) {
-  .letter {
-    font-size: 10rem;
   }
 }
 .letter-container {
@@ -292,7 +292,6 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
   mix-blend-mode: multiply;
   transition: 1s;
 }

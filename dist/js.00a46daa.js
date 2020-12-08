@@ -10656,10 +10656,16 @@ var languageStrings = {
 };
 var _default = {
   data: function data() {
+    var language = (window.navigator.language || window.navigator.userLanguage).replace(/\-.*$/, '').toLowerCase();
+
+    if (!Object.keys(languageStrings).includes(language)) {
+      language = 'en';
+    }
+
     return {
       scene: 0,
       transition: false,
-      language: 'en'
+      language: language
     };
   },
   components: {
@@ -10690,7 +10696,7 @@ var _default = {
     window.addEventListener("swipe", this.swipeCallback, false);
     window.addEventListener("keyup", this.keyupCallback, false);
     window.addEventListener(this.wheelEvent, this.wheelCallback, false);
-    this.scene = 3;
+    this.scene = 1;
   },
   destroy: function destroy() {
     if (this.instance) {
@@ -11346,14 +11352,14 @@ exports.default = _default;
                   autoplay: "autoplay",
                   muted: "muted",
                   loop: "loop",
-                  poster: "/video-thumb.44eb3cb5.jpg"
+                  poster: "/video-thumb2.679ebbbf.jpg"
                 },
                 domProps: { muted: true }
               },
               [
                 _c("source", {
                   attrs: {
-                    src: "/NEP15_v3.778d6cef.mp4",
+                    src: "/NEP15_v5.af2e96f2.mp4",
                     type: "video/webm"
                   }
                 })
@@ -11414,7 +11420,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "li",
-      { staticClass: "layer chain-people", attrs: { "data-depth": "0.5" } },
+      { staticClass: "chain-people layer", attrs: { "data-depth": "0.1" } },
       [
         _c("div", { staticClass: "chain" }, [
           _c("img", { attrs: { src: "/chain_full.7cae0003.png" } })
@@ -11478,7 +11484,7 @@ render._withStripped = true
       
       }
     })();
-},{"parallax-js":"node_modules/parallax-js/dist/parallax.js","./Snowflake":"js/components/Snowflake.vue","./Letter":"js/components/Letter.vue","swipe-listener":"node_modules/swipe-listener/dist/swipe-listener.min.js","../lang/en":"js/lang/en.js","../lang/fr":"js/lang/fr.js","../lang/de":"js/lang/de.js","./../../img/chain_full.png":[["chain_full.7cae0003.png","img/chain_full.png"],"img/chain_full.png"],"./../../img/proampac-logo.svg":[["proampac-logo.b9751fbf.svg","img/proampac-logo.svg"],"img/proampac-logo.svg"],"./../../img/NEP-logo.svg":[["NEP-logo.9989b5ed.svg","img/NEP-logo.svg"],"img/NEP-logo.svg"],"./../../img/video-thumb.jpg":[["video-thumb.44eb3cb5.jpg","img/video-thumb.jpg"],"img/video-thumb.jpg"],"./../../img/NEP15_v3.mp4":[["NEP15_v3.778d6cef.mp4","img/NEP15_v3.mp4"],"img/NEP15_v3.mp4"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/index.js":[function(require,module,exports) {
+},{"parallax-js":"node_modules/parallax-js/dist/parallax.js","./Snowflake":"js/components/Snowflake.vue","./Letter":"js/components/Letter.vue","swipe-listener":"node_modules/swipe-listener/dist/swipe-listener.min.js","../lang/en":"js/lang/en.js","../lang/fr":"js/lang/fr.js","../lang/de":"js/lang/de.js","./../../img/chain_full.png":[["chain_full.7cae0003.png","img/chain_full.png"],"img/chain_full.png"],"./../../img/proampac-logo.svg":[["proampac-logo.b9751fbf.svg","img/proampac-logo.svg"],"img/proampac-logo.svg"],"./../../img/NEP-logo.svg":[["NEP-logo.9989b5ed.svg","img/NEP-logo.svg"],"img/NEP-logo.svg"],"./../../img/video-thumb2.jpg":[["video-thumb2.679ebbbf.jpg","img/video-thumb2.jpg"],"img/video-thumb2.jpg"],"./../../img/NEP15_v5.mp4":[["NEP15_v5.af2e96f2.mp4","img/NEP15_v5.mp4"],"img/NEP15_v5.mp4"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));

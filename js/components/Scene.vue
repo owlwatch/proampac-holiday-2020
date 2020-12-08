@@ -9,7 +9,7 @@ ul#scene(:class="{ transition }", :data-scene="scene")
 		.layer(data-depth="0.1")
 			.horizon
 
-	// JOY 
+	// JOY
 	li.joy-word
 		.layer(data-depth="0.3", data-letter="j")
 			letter(:is_shadow="true", letter="j")
@@ -56,7 +56,7 @@ ul#scene(:class="{ transition }", :data-scene="scene")
 		.message-copy(v-html="lang('message')")
 
 	// Chain
-	li.layer.chain-people(data-depth="0.5")
+	li.chain-people.layer(data-depth="0.1")
 		.chain
 			img(src="../../img/chain_full.png")
 	
@@ -87,8 +87,8 @@ ul#scene(:class="{ transition }", :data-scene="scene")
 				)
 		.main-area
 			.video-background
-				video(playsinline autoplay muted loop poster="../../img/video-thumb.jpg")
-					source(src="../../img/NEP15_v3.mp4" type="video/webm")
+				video(playsinline autoplay muted loop poster="../../img/video-thumb2.jpg")
+					source(src="../../img/NEP15_v5.mp4" type="video/webm")
 			
 			.copy(
 				v-html="lang('nep')"
@@ -118,10 +118,14 @@ const languageStrings = {en, fr, de};
 
 export default {
 	data() {
+        let language = (window.navigator.language || window.navigator.userLanguage).replace(/\-.*$/, '').toLowerCase();
+        if( !Object.keys(languageStrings).includes(language) ){
+            language = 'en';
+        }
 		return {
 			scene: 0,
 			transition: false,
-			language: 'en'
+			language
 		};
 	},
 
@@ -142,7 +146,7 @@ export default {
 		window.addEventListener("swipe", this.swipeCallback, false);
 		window.addEventListener("keyup", this.keyupCallback, false);
 		window.addEventListener(this.wheelEvent, this.wheelCallback, false);
-		this.scene = 3;
+		this.scene = 1;
 	},
 
 	destroy() {
@@ -575,7 +579,7 @@ a {
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: rgba(0,0,0,0.4);
+			// background-color: rgba(0,0,0,0.4);
 			mix-blend-mode: multiply;
 			transition: 1s;
 		}
