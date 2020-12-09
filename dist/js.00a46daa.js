@@ -10518,6 +10518,172 @@ var _default = {
   nep: "\n<p class=\"leading\"><strong>ProAmpac</strong> und <strong>Northeast Passage</strong> \njeden Tag Gutes.</p>\n\n<p>Wir unterst\xFCtzen Northeast Passage bei ihren Bem\xFChungen um die Bereitstellung \nvon barrierefreien Freizeit- und Gesundheitsf\xF6rderungsprogrammen f\xFCr Menschen mit Behinderungen.</p>\n\n<p>Informieren Sie sich n\xE4her \xFCber Northeast Passage auf \n<a href=\"https://nepassage.org\" target=\"_blank\">www.nepassage.org</a>.</p>\n"
 };
 exports.default = _default;
+},{}],"node_modules/js-cookie/src/js.cookie.js":[function(require,module,exports) {
+var define;
+/*!
+ * JavaScript Cookie v2.2.1
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader;
+	if (typeof define === 'function' && define.amd) {
+		define(factory);
+		registeredInModuleLoader = true;
+	}
+	if (typeof exports === 'object') {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function decode (s) {
+		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
+	}
+
+	function init (converter) {
+		function api() {}
+
+		function set (key, value, attributes) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			attributes = extend({
+				path: '/'
+			}, api.defaults, attributes);
+
+			if (typeof attributes.expires === 'number') {
+				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
+			}
+
+			// We're using "expires" because "max-age" is not supported by IE
+			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+			try {
+				var result = JSON.stringify(value);
+				if (/^[\{\[]/.test(result)) {
+					value = result;
+				}
+			} catch (e) {}
+
+			value = converter.write ?
+				converter.write(value, key) :
+				encodeURIComponent(String(value))
+					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+
+			key = encodeURIComponent(String(key))
+				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
+				.replace(/[\(\)]/g, escape);
+
+			var stringifiedAttributes = '';
+			for (var attributeName in attributes) {
+				if (!attributes[attributeName]) {
+					continue;
+				}
+				stringifiedAttributes += '; ' + attributeName;
+				if (attributes[attributeName] === true) {
+					continue;
+				}
+
+				// Considers RFC 6265 section 5.2:
+				// ...
+				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
+				//     character:
+				// Consume the characters of the unparsed-attributes up to,
+				// not including, the first %x3B (";") character.
+				// ...
+				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+			}
+
+			return (document.cookie = key + '=' + value + stringifiedAttributes);
+		}
+
+		function get (key, json) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			var jar = {};
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all.
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = decode(parts[0]);
+					cookie = (converter.read || converter)(cookie, name) ||
+						decode(cookie);
+
+					if (json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					jar[name] = cookie;
+
+					if (key === name) {
+						break;
+					}
+				} catch (e) {}
+			}
+
+			return key ? jar[key] : jar;
+		}
+
+		api.set = set;
+		api.get = function (key) {
+			return get(key, false /* read as raw */);
+		};
+		api.getJSON = function (key) {
+			return get(key, true /* read as json */);
+		};
+		api.remove = function (key, attributes) {
+			set(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.defaults = {};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+
 },{}],"js/components/Scene.vue":[function(require,module,exports) {
 "use strict";
 
@@ -10539,6 +10705,8 @@ var _en = _interopRequireDefault(require("../lang/en"));
 var _fr = _interopRequireDefault(require("../lang/fr"));
 
 var _de = _interopRequireDefault(require("../lang/de"));
+
+var _jsCookie = _interopRequireDefault(require("js-cookie"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10656,7 +10824,11 @@ var languageStrings = {
 };
 var _default = {
   data: function data() {
-    var language = (window.navigator.language || window.navigator.userLanguage).replace(/\-.*$/, '').toLowerCase();
+    var language = _jsCookie.default.get('language');
+
+    if (!language) {
+      language = (window.navigator.language || window.navigator.userLanguage).replace(/\-.*$/, '').toLowerCase();
+    }
 
     if (!Object.keys(languageStrings).includes(language)) {
       language = 'en';
@@ -10991,6 +11163,11 @@ var _default = {
     },
     changeLanguage: function changeLanguage(key) {
       this.language = key;
+
+      _jsCookie.default.set('language', key, {
+        expires: 1,
+        path: ''
+      });
     },
     onSwipe: function onSwipe(e) {
       if (this.transition || !e.detail || !e.detail.directions) {
@@ -11484,7 +11661,7 @@ render._withStripped = true
       
       }
     })();
-},{"parallax-js":"node_modules/parallax-js/dist/parallax.js","./Snowflake":"js/components/Snowflake.vue","./Letter":"js/components/Letter.vue","swipe-listener":"node_modules/swipe-listener/dist/swipe-listener.min.js","../lang/en":"js/lang/en.js","../lang/fr":"js/lang/fr.js","../lang/de":"js/lang/de.js","./../../img/chain_full.png":[["chain_full.7cae0003.png","img/chain_full.png"],"img/chain_full.png"],"./../../img/proampac-logo.svg":[["proampac-logo.b9751fbf.svg","img/proampac-logo.svg"],"img/proampac-logo.svg"],"./../../img/NEP-logo.svg":[["NEP-logo.9989b5ed.svg","img/NEP-logo.svg"],"img/NEP-logo.svg"],"./../../img/video-thumb2.jpg":[["video-thumb2.679ebbbf.jpg","img/video-thumb2.jpg"],"img/video-thumb2.jpg"],"./../../img/NEP15_v5.mp4":[["NEP15_v5.af2e96f2.mp4","img/NEP15_v5.mp4"],"img/NEP15_v5.mp4"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/index.js":[function(require,module,exports) {
+},{"parallax-js":"node_modules/parallax-js/dist/parallax.js","./Snowflake":"js/components/Snowflake.vue","./Letter":"js/components/Letter.vue","swipe-listener":"node_modules/swipe-listener/dist/swipe-listener.min.js","../lang/en":"js/lang/en.js","../lang/fr":"js/lang/fr.js","../lang/de":"js/lang/de.js","js-cookie":"node_modules/js-cookie/src/js.cookie.js","./../../img/chain_full.png":[["chain_full.7cae0003.png","img/chain_full.png"],"img/chain_full.png"],"./../../img/proampac-logo.svg":[["proampac-logo.b9751fbf.svg","img/proampac-logo.svg"],"img/proampac-logo.svg"],"./../../img/NEP-logo.svg":[["NEP-logo.9989b5ed.svg","img/NEP-logo.svg"],"img/NEP-logo.svg"],"./../../img/video-thumb2.jpg":[["video-thumb2.679ebbbf.jpg","img/video-thumb2.jpg"],"img/video-thumb2.jpg"],"./../../img/NEP15_v5.mp4":[["NEP15_v5.af2e96f2.mp4","img/NEP15_v5.mp4"],"img/NEP15_v5.mp4"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));

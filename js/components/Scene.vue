@@ -113,15 +113,19 @@ import SwipeListener from "swipe-listener";
 import en from '../lang/en';
 import fr from '../lang/fr';
 import de from '../lang/de';
+import Cookies from 'js-cookie'
 
 const languageStrings = {en, fr, de};
 
 export default {
 	data() {
-        let language = (window.navigator.language || window.navigator.userLanguage).replace(/\-.*$/, '').toLowerCase();
-        if( !Object.keys(languageStrings).includes(language) ){
-            language = 'en';
-        }
+		let language = Cookies.get('language')
+		if( !language ){
+			language = (window.navigator.language || window.navigator.userLanguage).replace(/\-.*$/, '').toLowerCase();
+		}
+		if( !Object.keys(languageStrings).includes(language) ){
+				language = 'en';
+		}
 		return {
 			scene: 0,
 			transition: false,
@@ -164,6 +168,7 @@ export default {
 
 	watch: {
 		language(key){
+
 			if( this.scene==3 ){
 				// apply active to all the paragraphs
 				setTimeout(() => {
@@ -308,6 +313,7 @@ export default {
 		},
 		changeLanguage(key){
 			this.language = key;
+			Cookies.set('language', key, { expires: 1, path: '' });
 		},
 		onSwipe(e) {
 			if (this.transition || !e.detail || !e.detail.directions ) {
