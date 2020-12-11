@@ -447,6 +447,7 @@ export default {
 @import "~rfs/scss";
 body,
 html {
+  overscroll-behavior-x: none;
 	font-family: filosofia, serif;
 	height: 100%;
 	position: relative;
