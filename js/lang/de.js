@@ -5,7 +5,7 @@ und unsere Gemeinsamkeiten zusammen
 in der Gemeinschaft zu feiern.
 </p>
 
-<p>Joyeuses fêtes</p>
+<p>Frohe Festtage</p>
 `,
 	nep : `
 <p class="leading"><strong>ProAmpac</strong> und <strong>Northeast Passage</strong> 

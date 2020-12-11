@@ -10514,7 +10514,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _default = {
-  message: "\n<p>Freude bedeutet dankbar zu sein daf\xFCr, was uns einzigartig macht,\nund unsere Gemeinsamkeiten zusammen\nin der Gemeinschaft zu feiern.\n</p>\n\n<p>Joyeuses f\xEAtes</p>\n",
+  message: "\n<p>Freude bedeutet dankbar zu sein daf\xFCr, was uns einzigartig macht,\nund unsere Gemeinsamkeiten zusammen\nin der Gemeinschaft zu feiern.\n</p>\n\n<p>Frohe Festtage</p>\n",
   nep: "\n<p class=\"leading\"><strong>ProAmpac</strong> und <strong>Northeast Passage</strong> \njeden Tag Gutes.</p>\n\n<p>Wir unterst\xFCtzen Northeast Passage bei ihren Bem\xFChungen um die Bereitstellung \nvon barrierefreien Freizeit- und Gesundheitsf\xF6rderungsprogrammen f\xFCr Menschen mit Behinderungen.</p>\n\n<p>Informieren Sie sich n\xE4her \xFCber Northeast Passage auf \n<a href=\"https://nepassage.org\" target=\"_blank\">www.nepassage.org</a>.</p>\n"
 };
 exports.default = _default;
