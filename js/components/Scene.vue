@@ -74,7 +74,7 @@ ul#scene(:class="{ transition }", :data-scene="scene")
 	li.learn-more
 		.header
 			a.proampac-logo(
-				href="https://prompac.com/" target="_blank"
+				href="https://proampac.com/" target="_blank"
 			)
 				img(
 					src="../../img/proampac-logo.svg"

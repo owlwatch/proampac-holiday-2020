@@ -11614,7 +11614,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "proampac-logo",
-          attrs: { href: "https://prompac.com/", target: "_blank" }
+          attrs: { href: "https://proampac.com/", target: "_blank" }
         },
         [_c("img", { attrs: { src: "/proampac-logo.b9751fbf.svg" } })]
       ),
@@ -11707,7 +11707,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname.replace(/^(\d+)/, "3000") + ':443' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname.replace(/^(d+)/, "3000") + ':443' + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
